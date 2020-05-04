@@ -11,29 +11,19 @@ import (
 
 // IoReadWriter is a utility focusing on mocking stdin/out.
 type IoReadWriter struct {
-	reader io.Reader
-	writer io.Writer
-}
-
-// SetReader is a simple setter of io.Reader.
-func (rw *IoReadWriter) SetReader(reader io.Reader) {
-	rw.reader = reader
+	Reader io.Reader
+	Writer io.Writer
 }
 
 // SetStringAsReader creates and sets a string reader as input reader.
 func (rw *IoReadWriter) SetStringAsReader(str string) {
-	rw.reader = strings.NewReader(str)
-}
-
-// SetWriter is a simple setter of io.Writer.
-func (rw *IoReadWriter) SetWriter(writer io.Writer) {
-	rw.writer = writer
+	rw.Reader = strings.NewReader(str)
 }
 
 // ReadStrings parses lines of inputs into 2D string array.
 func (rw *IoReadWriter) ReadStrings() [][]string {
 	out := [][]string{}
-	scanner := bufio.NewScanner(rw.reader)
+	scanner := bufio.NewScanner(rw.Reader)
 
 	for scanner.Scan() {
 		out = append(out, strings.Split(scanner.Text(), " "))
@@ -45,7 +35,7 @@ func (rw *IoReadWriter) ReadStrings() [][]string {
 // ReadInts parses lines of inputs into 2D int array.
 func (rw *IoReadWriter) ReadInts() [][]int {
 	out := [][]int{}
-	scanner := bufio.NewScanner(rw.reader)
+	scanner := bufio.NewScanner(rw.Reader)
 
 	for scanner.Scan() {
 		var ints []int
