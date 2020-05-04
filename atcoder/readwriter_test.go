@@ -75,23 +75,3 @@ func TestIoReadWriter_ReadInts(t *testing.T) {
 		}
 	}
 }
-
-// func TestIoReadWriter_ReadInts(t *testing.T) {
-// tests := []struct {
-// 	in  string
-// 	out []string
-// }{
-// 	{"1 2", []string{"3", "4"}},
-// 	{"", []string{}},
-// }
-
-// for _, tt := range tests {
-// 	rw := IoReadWriter{}
-// 	rw.SetStringAsReader(tt.in)
-// 	got := rw.ReadStrings()
-
-// 	if got != tt.out {
-// 		t.Errorf("got %#v want %#v", got, tt.out)
-// 	}
-// }
-// }
